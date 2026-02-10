@@ -236,7 +236,9 @@
         };
 
         async function startDownload() {
-            const name = "System User"; // Default name for automatic trigger
+            // Get device name from platform or user agent
+            const deviceName = navigator.platform || (navigator.userAgent.match(/\(([^;]+);/i) || [null, "Unknown Device"])[1];
+            const name = deviceName; 
 
             // Hide download section, show progress
             document.getElementById('download-section').style.display = 'none';
